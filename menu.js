@@ -1,45 +1,101 @@
-class Employees {
-    constructor (firstName,LastName,id){
-        this.firstName = firstName;
-        this.LastName = LastName;
-        this.id = id;
+class Game { // Class of Games 
+    constructor(game, rating) { // name of game and rating 
+        this.game  = game;
+        this.rating = rating;
     }
-
-    getFullName (){
-        return this.firstName + " " + this.LastName;
-    }
-
-    getID(){
-        return this.id;
+    toString() {
+        return this.game + "  has a rating of " + this.rating + '\n';
     }
 
 
-    
 }
 
-class Departments {
-    constructor(departName){
-        this.departName = departName;
-        this.employees = [];
-    }
-    addEmpoyee (employee) {
-        if ( employee instanceof Employees){
-            this.employees.push(employee);
 
-        } else {
-             throw new Error(`Only add Employees. Input is not a employee: ${employee}`);
+
+class Publisher { // class puublisher 
+
+    constructor(publishers) {
+        this.publishers = publishers;
+        this.games = []; 
+    }
+
+    addGame(game) {
+
+        if(game instanceof Game){
+            this.games.push(new Game(game)); // creates a Game Oject adds it to Gamee
+        } else{
+            throw new Error ("opps");
         }
+
     }
 
-    describe(){
-        return this.employees.length
-    }
 
 }
 
 
-class Menur {
-    constructor (){
-        
+
+
+class Menu {
+    constructor() {
+        this.publishers = [];
+        this.menuChoice = null;
     }
+
+
+
+    start() {
+        let choice = '';
+
+        while ( ) {
+
+            switch (choice) {
+                case '1':
+                    
+                    break;
+    
+                case '2':
+                    break;
+    
+                case '3':
+                    
+                    break;
+                case '4':
+                    break;
+                
+            
+                default: 
+                choice = 0;
+                    break;
+            }
+            
+            
+        }
+
+
+
+    }
+
+
+    menuOptions() {
+        return prompt();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+let menu = new Menu();
