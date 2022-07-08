@@ -4,7 +4,7 @@ class Game { // Class of Games
         this.rating = rating;
     }
     toString() {
-        return this.game + "  has a rating of " + this.rating + '\n';
+        return `${this.game} Has a rating  ${this.rating}.`;
     }
 
 
@@ -24,10 +24,14 @@ class Publisher { // class puublisher
         if(game instanceof Game){
             this.games.push(game); // creates a Game Oject adds it to games array 
         } else{
-            throw new Error ("opps");
+            throw new Error (`Not a valid instance of Games. Argument is not a Game: ${game}`);
         }
 
     }
+
+	describe(){
+		return `${this.publisher} has a ${this.games.length} of  Games`;
+	}
 
 
 }
@@ -59,11 +63,11 @@ class Menu {
 
     
                 case '3':
-					this.viewPublishers(); 
+					this.viewPublishers(); // view publisher 
                     break;
 
                 case '4':
-					this.deletePublisher();
+					this.deletePublisher(); // deletes a publisher
                     break;
                 
             
@@ -75,6 +79,8 @@ class Menu {
             
             
         }
+
+		alert("See yaa");
 
 
 
@@ -97,21 +103,23 @@ class Menu {
 		let index = prompt ("Enter a index to view a Publisher");
 		if(index > -1 && index < this.publishers.length){
 			this.selection = this.publishers[index];
+			let descrip = "Publisher: "+ this.selection.publisher + ": Games:  " + this.selection.games + '\n';
+			
 
 			for (let i = 0; i < this.selection.games.length; i++) {
-			
+				descrip += i + ') ' + this.selection.games[i].game + '\n';
 				
 			}
 
-			let ch = this.gameMenuOptions();
+			let ch = this.gameMenuOptions(descrip);
 
 			switch(ch){
 				case '1':
 					this.createGame();
-					alert("test 1");
+					break;
 					
 				case '2':
-					alert("test 2");
+					this.deleteGame();
 
 			}
 
@@ -147,12 +155,12 @@ class Menu {
 		`);
     }
 
-	gameMenuOptions(gameMenu){
+	gameMenuOptions(gameInfo){
 		return prompt (`
 		1.) Add a game
 		2.) Delete a game
 		-------------------------
-		
+		${gameInfo}
 		`);
 	}
 	createGame(){
@@ -163,12 +171,14 @@ class Menu {
 
 	}
 
+	deleteGame(){
 
+		let index = prompt("Enter the index you want to delete ");
+		if (index > -1 && index < this.selection.games.length) {
+			this.selection.games.splice(index,1);
+		}
 
-
-
-
-
+	}
 
 
 
